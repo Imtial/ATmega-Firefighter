@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>ATmega FireFighter: Microcontroller Project</title>
+        <link rel="icon" href="https://cse.buet.ac.bd/assets/img/logo.png">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <style>
@@ -13,6 +14,7 @@
 
             body {
               overflow: hidden;
+              background-color: sepia;
             }
 
             .page {
@@ -41,8 +43,8 @@
             }
 
             .side-bar {
-                flex: 10%;
-                background-color: green;
+                flex: 12%;
+                background-color: rgb(194, 31, 26);
                 overflow-y: auto;
                 padding: 10px;
             }
@@ -50,9 +52,9 @@
             /* Style the side bar links */
             .side-bar a {
               color: white;
-              padding: 10px;
+              padding-top: 10px;
               text-decoration: none;
-              text-align: center;
+              text-align: left;
               font-size: 15px;
             }
 
@@ -62,7 +64,8 @@
               color: black;
             }
             .article {
-                flex: 90%;
+                flex: 88%;
+                /*overflow-wrap: normal;*/
                 overflow-y: auto;
                 padding: 10px;
             }
@@ -72,10 +75,44 @@
                 /*flex: 5%;*/
                 background-color: #dcdcdc;
                 text-align: center;
-                height: 20px;
+                height: 25px;
                 padding-top: 2px;
                 padding-bottom: 2px;
                 font-size: 15px;
+            }
+
+            .header {
+              padding: 1px;
+              background-color:#EFE0B9;
+              width: 100%;
+            }
+
+            h3 {
+              text-align: center;
+            }
+
+            p {
+              padding-left: 50px;
+              padding-right: 50px;
+              font-size: 18px;
+            }
+
+            table {
+              width: 500px;
+            }
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+            }
+            th, td {
+              padding: 10px;
+              text-align: left;
+            }
+            table tr:nth-child(odd) {
+              background-color: rgb(255, 255, 255);
+            }
+            table tr:nth-child(even) {
+              background-color: rgb(224, 216, 216);
             }
 
             @media screen and (max-width: 700px) {
@@ -106,29 +143,202 @@
             <div class="page-header">ATmega FireFighter</div>
             <div class="page-content">
                 <div class="side-bar">
-                    <a href="#project-description">Project Description</a>
-                    <a href="#equipments">Equipments</a>
-                    <a href="#algorithm">Algorithm</a>
+                    <a href="#introduction">Introduction</a><br/><br/>
+                    <a href="#project-description">A Brief Description</a><br/><br/>
+                    <a href="#how-it-works">How it works?</a><br/><br/>
+                    <a href="#equipments">Equipments</a><br/><br/>
+                    <a href="#block-diagram">Block Diagram</a><br/><br/>
+                    <a href="#algorithm">Algorithm</a><br/><br/>
+                    <a href="#hardware-design">Hardware Design</a><br/><br/>
+                    <a href="#software-design">Software Design</a><br/><br/>
+                    <a href="#pin-diagram">Detailed Pin Diagram</a><br/><br/>
+                    <a href="#problem">Problem Faced</a><br/><br/>
+                    <a href="#conclusion">Conclusion</a><br/><br/>
+                    <a href="#group-members">Group Members</a><br/><br/>
+                    <a href="#instructors">Course Instructors</a><br/><br/>
 
                 </div>
                 <div class="article">
-
-                    <div id="project-description">
-                        <h3>Project Description</h3>
+                    <div id="introduction" class="header">
+                      <h3>Introduction</h3>
                     </div>
-                    <p>Sriracha small batch tousled Tumblr banh mi sartorial. Cosby sweater XOXO direct trade Austin meggings banjo. Wayfarers deep v tousled Schlitz shabby chic, Portland Truffaut Marfa aesthetic keffiyeh. Salvia retro tattooed sartorial polaroid. Selvage hella 3 wolf moon PBR pug, ugh Schlitz freegan keffiyeh raw denim jean shorts wayfarers roof party. Neutra Shoreditch iPhone, +1 brunch Echo Park XOXO slow-carb street art Vice Williamsburg tattooed forage. Butcher Godard ethical try-hard.</p>
+                    <p>
+                      As a part of CSE 316: Microcontroller, microprocessor and embedded systems sessional course, we have created a prototype of an automated and primary fire prevention system as term project. We named the project <em><b>ATmega FireFighter</b></em>.
+                    </p>
+                    <p>
+                      On 20 February 2019, a massive fire accident took place at Chowkbazar, Dhaka. At least 80 people ware dead and 50 others were injured in that accident<sup><a href="https://en.wikipedia.org/wiki/2019_Dhaka_fire" target="_blank">[1]</a></sup>. Also a tragic video of that accident became viral on social media. We were deeply touched by that event. A series of fire accidents also took place around that time. So we wanted to build a prototype which can take an instant primary action against fire accident happened in home or office place.
+                    </p>
+                    <p>
+                      We also thought, as this project includes sensors, motors, GSM module and also we may need to trigger some actions in case of a particular event e.g. fire, we can learn a significant amount about the practical use of microcontroller.
+                    </p>
 
-                    <div id="equipments">
+                    <div id="project-description" class="header">
+                        <h3>A Brief Description</h3>
+                    </div>
+                    <p>
+                      <em>ATmega FireFighter</em> is an ATmega32-based project. In this project, we designed a system that can take an instant primary action to extinguish or at least stop spreading of the fire. The system also sends an alert SMS to the home owner or authority's mobile number when it detects fire incident.
+                    </p>
+
+                    <div id="how-it-works" class="header">
+                      <h3>How It Works?</h3>
+                    </div>
+                    <p>
+                      A flame(IR) sensor detects the existence of fire. The flame sensor and the opening of the water pipe are set parallely directed at the same direction. This subsystem is placed over a servo motor. The servo motor constantly rotates from about -75&#176; to 75&#176; and thus moves the sensor and helps to check fire. When the sensor gets any fire signal, it halts and check for confirmation about fire existence. As soon as, it is confirmed about a fire incident, the GSM module sends an alert SMS to the preset mobile number, e.g. authority's number. Then it starts throwing water at the fire incident as long as the sensor detects the existence of fire. If the fire is extinguished, the servo motor again starts rotating and checking for fire.
+                    </p>
+
+                    <div id="equipments" class="header">
                             <h3>Equipments</h3>
                     </div>
-                    <p>Vegan blog Truffaut irony deep v Etsy. You probably haven't heard of them Schlitz chambray art party craft beer Echo Park mixtape, deep v fashion axe Wes Anderson twee McSweeney's DIY. Retro twee polaroid 3 wolf moon, Bushwick locavore organic skateboard keffiyeh Kickstarter Williamsburg sustainable Godard sartorial trust fund. Stumptown paleo put a bird on it VHS hella. Put a bird on it mixtape Godard, vegan farm-to-table letterpress chia hella. Meggings DIY freegan normcore gastropub blog. Dreamcatcher wolf kitsch biodiesel lomo jean shorts, pug fap Odd Future craft beer stumptown locavore cornhole put a bird on it salvia.</p>
+                    <div style="padding: 50px">
+                      <table>
+                        <tr>
+                          <th>Name</th>
+                          <th>Model</th>
+                          <th>Quantity</th>
+                        </tr>
+                        <tr>
+                          <td>Microcontroller</td>
+                          <td>ATmega32</td>
+                          <td>2</td>
+                        </tr>
+                        <tr>
+                          <td>Flame(IR) Sensor</td>
+                          <td>1-Channel</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>Servo Motor</td>
+                          <td>MG995</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>12V DC Water Pump Motor</td>
+                          <td>-</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>GSM Module</td>
+                          <td>A6</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>LCD Module</td>
+                          <td>16x2</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>LED</td>
+                          <td>Red</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>12V Battery</td>
+                          <td>-</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>5V Power Supply</td>
+                          <td>-</td>
+                          <td>2</td>
+                        </tr>
+                      </table>
+                    </div>
 
-                    <div id="algorithm">
+                    <div id="block-diagram" class="header">
+                      <h3>Block Diagram</h3>
+                    </div>
+                    <div style="padding: 50px; text-align: center;">
+                      <figure>
+                          <img src="Block Diagram.png" alt="Block diagram of ATmega FireFighter" style="padding-bottom: 10px;">
+                          <figcaption style="text-align: center; font-size: 18px;">Fig.1 - Block diagram of <em>ATmega FireFighter</em></figcaption>
+                      </figure>
+                    </div>
+
+                    <div id="algorithm" class="header">
                             <h3>Algorithm</h3>
                     </div>
-                    <p>Hoodie Truffaut chillwave PBR art party. Slow-carb literally readymade, tousled stumptown ennui trust fund seitan paleo blog typewriter vegan. 90's mixtape American Apparel, kale chips art party iPhone Etsy Neutra organic kogi direct trade typewriter. Aesthetic occupy Portland artisan craft beer fixie, Pinterest irony normcore letterpress. 8-bit craft beer seitan flexitarian, synth banh mi cardigan ethical High Life. Fixie whatever literally semiotics Helvetica 8-bit. Gluten-free tattooed Odd Future umami blog master cleanse, asymmetrical 8-bit yr.</p>
+                    <p>
+                      This is a high-level algorithm of our system's operation:
+                    </p>
+                    <div style="padding: 2px 50px 10px 50px; font-size: 18px;">
+                      <div style="background-color: whitesmoke">
+                        <ol type="1">
+                            <li><code>initialize all register</code></li>
+                            <li><code>start sweeping servo motor</code></li>
+                            <li><code>read data from flame sensor</code></li>
+                            <li><code>perform analog-to-digital conversion on that data</code></li>
+                            <li><code>store converted data into sensor_reading</code></li>
+                            <li>
+                              <code><b>if</b> sensor_reading &lt FIRE_THRESHOLD</code>
+                              <ol type="1">
+                                <li><code>stop servo motor</code></li>
+                                <li><code>read more values from sensor</code></li>
+                                <li>
+                                  <code><b>if</b> sensor_reading is persistent i.e. fire is confirmed</code>
+                                  <ol type="1">
+                                    <li><code>send SMS from GSM module</code></li>
+                                    <li><code>turn on pump to throw water and move the servo motor at small angle keeping the fire event at the center</code></li>
+                                    <li><code>to check if fire is extinguished <b>goto step(3)</b><i>// <b>if</b> sensor_reading < FIRE_THRESHOLD</i></code></li>
+                                  </ol>
+                                </li>
+                                <li><code><b>else</b> continue sweeping the servo motor</code></li>
 
-                    <p>Tattooed gentrify asymmetrical twee, fashion axe normcore banh mi Etsy. Irony post-ironic kale chips readymade selfies art party, Marfa narwhal occupy before they sold out Thundercats. Banjo locavore 3 wolf moon artisan Marfa. XOXO church-key hella bitters, pour-over Blue Bottle wolf typewriter Carles. American Apparel umami twee locavore, blog hella artisan. Mixtape Shoreditch sriracha, organic before they sold out asymmetrical fashion axe ugh. Kale chips yr Pitchfork jean shorts Vice gentrify.</p>
+                              </ol>
+                            </li>
+                            <li><code><b>else</b> continue sweeping the servo motor</code></li>
+                        </ol>
+                      </div>
+                    </div>
+                    </code>
+
+
+                    <div id="hardware-design" class="header">
+                      <h3>Hardware Design</h3>
+                    </div>
+
+                    <div id="software-design" class="header">
+                        <h3>Software Design</h3>
+                    </div>
+                    <div style="padding: 50px; text-align: center;">
+                      <figure>
+                          <img src="flow_chart.png" alt="Flow Chart of ATmega FireFighter" style="padding-bottom: 10px;">
+                          <figcaption style="text-align: center; font-size: 18px;">Fig.2 - Flow Chart of <em>ATmega FireFighter</em></figcaption>
+                      </figure>
+                    </div>
+
+                    <div id="pin-diagram" class="header">
+                      <h3>Pin Diagram</h3>
+                    </div>
+
+                    <div id="problem" class="header">
+                        <h3>Problem Faced</h3>
+                    </div>
+
+                    <div id="conclusion" class="header">
+                      <h3>Conclusion</h3>
+                    </div>
+
+                    <div id="group-members" class="header">
+                        <h3>Group Members</h3>
+                    </div>
+                    <div style="padding-left: 50px;">
+                      <h4>Section A1:</h4>
+                      <ul style="list-style-type: square; font-size: 18px;">
+                        <li>Asif Imtial&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1605017)</li>
+                        <li>Hasibul Hisham&nbsp;(1605009)</li>
+                        <li>Shahrar Fatemi&nbsp;&nbsp;(1605007)</li>
+                      </ul>
+                    </div>
+
+                    <div id="instructors" class="header">
+                      <h3>Course Instructors</h3>
+                    </div>
+                    <div style="padding-left: 50px; font-size: 18px;">
+                    <ol type="1">
+                      <li>Md. Tareq Mahmood,<br/>Lecturer, CSE, BUET</li><br/>
+                      <li>Md. Masum Mushfiq,<br/>Lecturer, CSE, BUET</li><br/>
+                    </ol>
+                    </div>
                 </div>
             </div>
             <div class="page-footer">Department of CSE, BUET</div>
