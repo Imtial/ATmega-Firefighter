@@ -31,7 +31,7 @@
  * TOP = f_cpu/(N * f_pwm) - 1
  * Here, TOP = 1 MHz/(1 * 50 Hz) - 1 = 19999
  *
- * [Servo Motor SG90 Pro - Sensor Motor]
+ * [Servo Motor MG995 TowerPro - Motor to move the sensor]
  * 0.15 s / 60 deg = 0.45 s / 180 deg => Wait at least 450 ms for full rotation
  * 1 MHz / 1 = 1 MHz = 1 us per count
  ***/
