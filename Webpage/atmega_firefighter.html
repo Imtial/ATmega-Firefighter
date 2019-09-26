@@ -418,7 +418,7 @@
                       <h4 style="font-size: 18px;">GSM Module</h4>
                     </div>
                     <p>
-                      Write about gsm module.
+                      GSM module gives us the facility to establish a communication between a mobile-device and the GSM module. Whenever a fire incident occured we used the GSM module to send a message to the respective authority about the fire incident.
                     </p>
                     <figure style="padding-left: 5%; text-align: center">
                       <img src="a6-gsm.jpg" style="width: 500px; height: 400px; padding-right: 100px;">
@@ -430,7 +430,8 @@
                       <h4 style="font-size: 18px;">LCD Module</h4>
                     </div>
                     <p>
-                      Write about lcd module.
+                        We used a 16x2 LCD module to show the value read from the flame sensor and show relevant messages according to the situation. We know values near 1023 mean 'No fire'. During a 'No fire' situation, we only printed the value from the flame sensor. When the IR reading from the sensor went below our threshold value which most possibly meant a fire incident had occured
+                        (the fire incident was ensured after observing some repetitive values), we printed a message showing "Fire!!!" and also printed the corresponding sensor_reading in the next line. After the pump had been started by the motor driver, we used the LCD module to show the message "Pump ON" and in the next line we showed the message "Throwing Water" until the fire had been extinguished by the water pump.
                     </p>
                     <figure style="padding-left: 5%; text-align: center;">
                       <img src="lcd-illustration.png" style="width: 500px; height: 300px;">
