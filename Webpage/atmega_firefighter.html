@@ -419,6 +419,7 @@
                     </div>
                     <p>
                       GSM module gives us the facility to establish a communication between a mobile-device and the GSM module. Whenever a fire incident occured we used the GSM module to send a message to the respective authority about the fire incident.
+                      The detailed wire connections of the GSM module with the atmega32 microcontroller is showed in the <a href="#pin-diagram">Detailed Pin Diagram.</a>
                     </p>
                     <figure style="padding-left: 5%; text-align: center">
                       <img src="a6-gsm.jpg" style="width: 500px; height: 400px; padding-right: 100px;">
@@ -432,6 +433,7 @@
                     <p>
                         We used a 16x2 LCD module to show the value read from the flame sensor and show relevant messages according to the situation. We know values near 1023 mean 'No fire'. During a 'No fire' situation, we only printed the value from the flame sensor. When the IR reading from the sensor went below our threshold value which most possibly meant a fire incident had occured
                         (the fire incident was ensured after observing some repetitive values), we printed a message showing "Fire!!!" and also printed the corresponding sensor_reading in the next line. After the pump had been started by the motor driver, we used the LCD module to show the message "Pump ON" and in the next line we showed the message "Throwing Water" until the fire had been extinguished by the water pump.
+                        In the Lcd module, we used a potentiometer to control the contrast of the Lcd module.The wire connections of the Lcd module with the atmega32 microcontroller is showed in the <a href="#pin-diagram">Detailed Pin Diagram.</a>
                     </p>
                     <figure style="padding-left: 5%; text-align: center;">
                       <img src="lcd-illustration.png" style="width: 500px; height: 300px;">
@@ -483,10 +485,10 @@
                       The servo should move from -90&deg; to 90&deg; according to the datasheet. But in reality, the servo moves from approximately -75&deg; to 75&deg;. This narrows the surveillance area of the system. Also to achieve this much coverage we had to find a better working value of the uptime of PWM signal by trial and error.
                     </p>
                     <p>
-                      About GSM
+                      Using a GSM module with an atmega32 microcontroller might create lots of troubles in a hardware project. The frequency of the atmega32 was not similar to that of the GSM module. So, it created a huge problem to sync the frequencies of them. We solved it in the code. We had to fix a baud rate for the serial communication established between the atmega32 microcontroller and the GSM module. For this, we set specific values in the USART registers. The signals recieved by the GSM could not be transmitted smoothly most of the time, the reason of which was that the GSM was not configured correctly at first. Also we needed to power it directly from another 5V source to make it work fine.
                     </p>
                     <p>
-                      About LCD
+                      Due to inconsistent power supply sometimes, the Lcd module misses some bits during passing data from the microcontroller to the module and hence shows garbage values. We also faced similar issues. In such case, we had to reconnect the module's power supply to fix it back to work smoothly again.
                     </p>
                     <p>
                       Sometimes due to the unexpected behaviour of the flame sensor, the system detected fire although the fire incident was happening at a small angular distance from the direction the sensor was pointing at. To solve this problem, we had to increase the range of water-throwing. We also made a sprinkler and got better result at extinguishing fire.
@@ -519,6 +521,7 @@
                       <li>Md. Masum Mushfiq,<br/>Lecturer, CSE, BUET</li><br/>
                     </ol>
                     </div>
+
                 </div>
             </div>
             <div class="page-footer">Department of CSE, BUET</div>
