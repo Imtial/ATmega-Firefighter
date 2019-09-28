@@ -426,8 +426,8 @@
                       <h4 style="font-size: 18px;">GSM Module</h4>
                     </div>
                     <p>
-                      GSM module gives us the facility to establish a communication between a mobile-device and the GSM module. Whenever a fire incident occured we used the GSM module to send a message to the respective authority about the fire incident.
-                      The detailed wire connections of the GSM module with the atmega32 microcontroller is showed in the <a href="#pin-diagram">Detailed Pin Diagram.</a>
+                      GSM stands for <em>Global System for Mobile Communication</em> which is a standard to describe the protocols for second-generation <em>(2G)</em> digital cellular networks used by mobile devices.  GSM module gives us the facility to establish a communication between a mobile-device and the module. We used <em>A6 GSM module</em> for our project. A6 GSM module needs an USB cable to power up. The RXD pin was connected with ATmega32's TXD(pin 15) and the TXD pin was connected with ATmega32's RXD(pin 14) to transmit data between the GSM module and the microcontroller. At first we established a network between the GSM module and the ATmega32. Then whenever our sensor detected a fire occurance, we sent a message to the respective authority about the fire incident from the GSM module's sim card using ATmega32's UART communication.<br/>
+                          The detailed wire connections of the GSM module with the ATmega32 microcontroller is showed in the <a href="#pin-diagram">Detailed Pin Diagram.</a>
                     </p>
                     <figure style="padding-left: 5%; text-align: center">
                       <img src="a6-gsm.jpg" style="width: 500px; height: 400px; padding-right: 100px;">
